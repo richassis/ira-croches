@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { CartProvider } from './context/CartContext';
 import Layout from './components/layout/Layout';
+import ScrollToTop from './components/ui/ScrollToTop';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
@@ -9,6 +10,7 @@ import ProductDetail from './pages/ProductDetail';
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <CartProvider>
         <Layout>
           <Routes>
