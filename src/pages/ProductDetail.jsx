@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, ShoppingCart, MessageCircle, Check, Truck, Package, CreditCard } from 'lucide-react';
 import { products, storeConfig } from '../data/products';
@@ -18,6 +18,11 @@ const ProductDetail = () => {
   // Estados para selecao
   const [selectedColor, setSelectedColor] = useState(product?.colors?.[0] || null);
   const [selectedPayment, setSelectedPayment] = useState(storeConfig.payment.methods[0]);
+
+  // Scroll para o topo quando carregar a página
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   // Se produto nao existir, mostrar mensagem
   if (!product) {
