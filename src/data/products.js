@@ -170,7 +170,7 @@ export const storeConfig = {
   artisan: {
     name: "Ira",
     photo: "/iracina.jpg", // Adicionar foto depois
-    description: "Apaixonada por artesanato, Ira transformou sua paixão pelo crochê em uma forma de criar peças únicas e especiais. Cada bolsa é feita com dedicação, carinho e atenção aos detalhes, garantindo qualidade e exclusividade. Com anos de experiência em técnicas de crochê, desenvolvo modelos que combinam tradição e modernidade.",
+    description: "Apaixonada por artesanato, Ira transformou sua paixão pelo crochê em uma forma de criar peças únicas e especiais. Cada bolsa é feita com dedicação, carinho e atenção aos detalhes, garantindo qualidade e exclusividade. Com anos de experiência em técnicas de crochê, desenvolve modelos que combinam tradição e modernidade.",
     experience: "Mais de 10 anos trabalhando com crochê artesanal",
     specialty: "Bolsas personalizadas em diversas cores e tamanhos"
   },

@@ -65,6 +65,111 @@ const Home = () => {
         </div>
       </section>
 
+       {/* Seção Sobre - Expandida */}
+      <section id="sobre" className="py-16 md:py-24 bg-white">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-brand text-secondary mb-4">
+              Conheça a Artesã
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              A história por trás de cada bolsa
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+            {/* Foto da Artesã */}
+            <div className="order-2 md:order-1">
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-xl bg-gray-200 flex items-center justify-center">
+                {storeConfig.artisan.photo ? (
+                  <img
+                    src={storeConfig.artisan.photo}
+                    alt={storeConfig.artisan.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="text-center p-8">
+                    <Users className="w-24 h-24 text-gray-400 mx-auto mb-4" />
+                    <p className="text-gray-500 text-lg font-semibold">{storeConfig.artisan.name}</p>
+                    <p className="text-gray-400 text-sm mt-2">Foto em breve</p>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Informações da Artesã */}
+            <div className="order-1 md:order-2">
+              <h3 className="text-2xl font-display font-bold text-primary mb-4">
+                {storeConfig.artisan.name}
+              </h3>
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                {storeConfig.artisan.description}
+              </p>
+
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start">
+                  <Award className="w-6 h-6 text-primary mr-3 mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-gray-900">Experiência</p>
+                    <p className="text-gray-600">{storeConfig.artisan.experience}</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <Heart className="w-6 h-6 text-primary mr-3 mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-gray-900">Especialidade</p>
+                    <p className="text-gray-600">{storeConfig.artisan.specialty}</p>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href={storeConfig.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="primary" className="flex items-center space-x-2">
+                  <Instagram className="w-5 h-5" />
+                  <span>Seguir {storeConfig.instagram}</span>
+                </Button>
+              </a>
+            </div>
+          </div>
+
+          {/* Cards de Destaque */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-6 rounded-xl text-center">
+              <Heart className="w-12 h-12 text-primary mx-auto mb-3" />
+              <h3 className="font-bold text-gray-900 mb-2">Feito à Mão</h3>
+              <p className="text-sm text-gray-600">
+                Cada peça é única e artesanal
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-accent/10 to-accent/5 p-6 rounded-xl text-center">
+              <MessageCircle className="w-12 h-12 text-accent mx-auto mb-3" />
+              <h3 className="font-bold text-gray-900 mb-2">Atendimento</h3>
+              <p className="text-sm text-gray-600">
+                Direto pelo WhatsApp
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-6 rounded-xl text-center">
+              <div className="text-4xl mb-3">✨</div>
+              <h3 className="font-bold text-gray-900 mb-2">Qualidade</h3>
+              <p className="text-sm text-gray-600">
+                Materiais selecionados
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-accent/10 to-accent/5 p-6 rounded-xl text-center">
+              <div className="text-4xl mb-3">🎨</div>
+              <h3 className="font-bold text-gray-900 mb-2">Design</h3>
+              <p className="text-sm text-gray-600">
+                Modelos exclusivos
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Produtos - Carrossel Principal */}
       <section id="produtos" className="py-16 md:py-24 bg-white">
         <div className="container-custom">
@@ -166,111 +271,6 @@ const Home = () => {
             <p className="text-sm text-gray-600">
               💬 Todas as negociações são feitas via WhatsApp para melhor atendimento personalizado
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Seção Sobre - Expandida */}
-      <section id="sobre" className="py-16 md:py-24 bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-brand text-secondary mb-4">
-              Conheça a Artesã
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              A história por trás de cada bolsa
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            {/* Foto da Artesã */}
-            <div className="order-2 md:order-1">
-              <div className="aspect-square rounded-2xl overflow-hidden shadow-xl bg-gray-200 flex items-center justify-center">
-                {storeConfig.artisan.photo ? (
-                  <img
-                    src={storeConfig.artisan.photo}
-                    alt={storeConfig.artisan.name}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="text-center p-8">
-                    <Users className="w-24 h-24 text-gray-400 mx-auto mb-4" />
-                    <p className="text-gray-500 text-lg font-semibold">{storeConfig.artisan.name}</p>
-                    <p className="text-gray-400 text-sm mt-2">Foto em breve</p>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Informações da Artesã */}
-            <div className="order-1 md:order-2">
-              <h3 className="text-2xl font-display font-bold text-primary mb-4">
-                {storeConfig.artisan.name}
-              </h3>
-              <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                {storeConfig.artisan.description}
-              </p>
-
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start">
-                  <Award className="w-6 h-6 text-primary mr-3 mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-gray-900">Experiência</p>
-                    <p className="text-gray-600">{storeConfig.artisan.experience}</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Heart className="w-6 h-6 text-primary mr-3 mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-gray-900">Especialidade</p>
-                    <p className="text-gray-600">{storeConfig.artisan.specialty}</p>
-                  </div>
-                </div>
-              </div>
-
-              <a
-                href={storeConfig.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="primary" className="flex items-center space-x-2">
-                  <Instagram className="w-5 h-5" />
-                  <span>Seguir {storeConfig.instagram}</span>
-                </Button>
-              </a>
-            </div>
-          </div>
-
-          {/* Cards de Destaque */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-6 rounded-xl text-center">
-              <Heart className="w-12 h-12 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-gray-900 mb-2">Feito à Mão</h3>
-              <p className="text-sm text-gray-600">
-                Cada peça é única e artesanal
-              </p>
-            </div>
-            <div className="bg-gradient-to-br from-accent/10 to-accent/5 p-6 rounded-xl text-center">
-              <MessageCircle className="w-12 h-12 text-accent mx-auto mb-3" />
-              <h3 className="font-bold text-gray-900 mb-2">Atendimento</h3>
-              <p className="text-sm text-gray-600">
-                Direto pelo WhatsApp
-              </p>
-            </div>
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-6 rounded-xl text-center">
-              <div className="text-4xl mb-3">✨</div>
-              <h3 className="font-bold text-gray-900 mb-2">Qualidade</h3>
-              <p className="text-sm text-gray-600">
-                Materiais selecionados
-              </p>
-            </div>
-            <div className="bg-gradient-to-br from-accent/10 to-accent/5 p-6 rounded-xl text-center">
-              <div className="text-4xl mb-3">🎨</div>
-              <h3 className="font-bold text-gray-900 mb-2">Design</h3>
-              <p className="text-sm text-gray-600">
-                Modelos exclusivos
-              </p>
-            </div>
           </div>
         </div>
       </section>
