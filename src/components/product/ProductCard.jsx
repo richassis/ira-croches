@@ -1,7 +1,7 @@
 import { ShoppingCart, MessageCircle, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
-import { formatPrice, formatColors } from '../../utils/formatters';
+import { formatPrice, calculatePixPrice, formatColors } from '../../utils/formatters';
 import { generateProductWhatsAppURL } from '../../utils/whatsapp';
 import { storeConfig } from '../../data/products';
 import Button from '../ui/Button';
@@ -9,13 +9,24 @@ import Button from '../ui/Button';
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
 
-  const handleBuyNow = () => {
+  const handleBuyNow = (e) => {
+    e.preventDefault(); // Prevenir navegação do Link
     const whatsappUrl = generateProductWhatsAppURL(product, storeConfig.phone);
     window.open(whatsappUrl, '_blank');
   };
 
+  const handleAddToCart = (e) => {
+    e.preventDefault(); // Prevenir navegação do Link
+    addToCart(product);
+  };
+
+  const pixPrice = calculatePixPrice(product.price, storeConfig.payment.pixDiscount);
+
   return (
-    <div className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100">
+    <Link
+      to={`/bolsa/${product.slug}`}
+      className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100 block"
+    >
       {/* Imagem */}
       <div className="relative overflow-hidden aspect-square bg-gray-100">
         <img
@@ -39,9 +50,14 @@ const ProductCard = ({ product }) => {
           <h3 className="text-lg font-display font-semibold text-gray-900 mb-1">
             {product.name}
           </h3>
-          <p className="text-2xl font-bold text-primary">
-            {formatPrice(product.price)}
-          </p>
+          <div className="space-y-1">
+            <p className="text-2xl font-bold text-primary">
+              {formatPrice(product.price)}
+            </p>
+            <p className="text-sm text-green-600 font-semibold">
+              {formatPrice(pixPrice)} no PIX ({storeConfig.payment.pixDiscount}% OFF)
+            </p>
+          </div>
         </div>
 
         {/* Descrição */}
@@ -60,26 +76,6 @@ const ProductCard = ({ product }) => {
 
         {/* Botões */}
         <div className="space-y-2">
-          <Link to={`/bolsa/${product.slug}`}>
-            <Button
-              variant="ghost"
-              className="w-full flex items-center justify-center space-x-2"
-            >
-              <Eye className="w-4 h-4" />
-              <span>Ver Detalhes</span>
-            </Button>
-          </Link>
-
-          <Button
-            variant="primary"
-            onClick={() => addToCart(product)}
-            disabled={!product.inStock}
-            className="w-full flex items-center justify-center space-x-2"
-          >
-            <ShoppingCart className="w-4 h-4" />
-            <span>Adicionar ao Carrinho</span>
-          </Button>
-
           <Button
             variant="outline"
             onClick={handleBuyNow}
@@ -89,9 +85,27 @@ const ProductCard = ({ product }) => {
             <MessageCircle className="w-4 h-4" />
             <span>Comprar Agora</span>
           </Button>
+
+          <Button
+            variant="primary"
+            onClick={handleAddToCart}
+            disabled={!product.inStock}
+            className="w-full flex items-center justify-center space-x-2"
+          >
+            <ShoppingCart className="w-4 h-4" />
+            <span>Adicionar ao Carrinho</span>
+          </Button>
+
+          <Button
+            variant="ghost"
+            className="w-full flex items-center justify-center space-x-2"
+          >
+            <Eye className="w-4 h-4" />
+            <span>Ver Detalhes</span>
+          </Button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

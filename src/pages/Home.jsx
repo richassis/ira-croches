@@ -16,25 +16,34 @@ const Home = () => {
   return (
     <div className="overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-secondary via-secondary-light to-accent py-20 md:py-32">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnptMCAwYzMuMzE0IDAgNiAyLjY4NiA2IDZzLTIuNjg2IDYtNiA2LTYtMi42ODYtNi02IDIuNjg2LTYgNi02eiIgc3Ryb2tlPSIjRDRBRjM3IiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4xIi8+PC9nPjwvc3ZnPg==')] opacity-30"></div>
+      <section className="relative min-h-screen bg-gradient-to-br from-secondary/80 via-secondary-light/80 to-accent/80 py-20 md:py-32 flex items-center">
+        {/* Banner Background */}
+        <div className="absolute inset-0">
+          <img
+            src="/banner.png"
+            alt="Banner Background"
+            className="w-full h-full object-cover"
+          />
+          {/* Overlay com blur */}
+          <div className="absolute inset-0 bg-secondary/60 backdrop-blur-sm"></div>
+        </div>
 
         <div className="container-custom relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-6">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-brand text-primary mb-6 drop-shadow-lg">
               {storeConfig.name}
             </h1>
-            <p className="text-xl md:text-2xl text-primary-light font-semibold mb-4">
+            <p className="text-xl md:text-2xl text-primary-light font-semibold mb-4 drop-shadow">
               {storeConfig.tagline}
             </p>
-            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto drop-shadow">
               {storeConfig.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
                 variant="primary"
                 onClick={scrollToProducts}
-                className="text-lg px-8 py-4"
+                className="text-lg px-8 py-4 shadow-xl"
               >
                 Ver Coleção
               </Button>
@@ -43,14 +52,14 @@ const Home = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button variant="outline" className="text-lg px-8 py-4 bg-white/10 backdrop-blur border-white text-white hover:bg-white hover:text-secondary">
+                <Button variant="outline" className="text-lg px-8 py-4 bg-white/20 backdrop-blur border-white text-white hover:bg-white hover:text-secondary shadow-xl">
                   <Instagram className="w-5 h-5 mr-2" />
                   Seguir no Instagram
                 </Button>
               </a>
             </div>
             <div className="mt-12 animate-bounce">
-              <ArrowDown className="w-8 h-8 text-primary mx-auto" />
+              <ArrowDown className="w-8 h-8 text-primary mx-auto drop-shadow" />
             </div>
           </div>
         </div>
@@ -125,11 +134,47 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Formas de Pagamento */}
+      <section className="py-16 bg-white">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <MessageCircle className="w-16 h-16 text-primary mx-auto mb-6" />
+            <h2 className="text-3xl font-display font-bold text-gray-900 mb-4">
+              Formas de Pagamento
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Escolha a forma que melhor se adequa ao seu perfil
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {storeConfig.payment.methods.map((method, index) => (
+              <div key={method.id} className="text-center p-6 bg-gray-50 rounded-xl border-2 border-gray-100 hover:border-primary/30 transition-colors">
+                <div className="text-5xl mb-4">{method.icon}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{method.name}</h3>
+                <p className="text-gray-600 mb-4">{method.description}</p>
+                {method.id === 'pix' && (
+                  <div className="bg-green-100 text-green-800 px-4 py-2 rounded-lg text-sm font-semibold">
+                    {storeConfig.payment.pixDiscount}% de desconto!
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <p className="text-sm text-gray-600">
+              💬 Todas as negociações são feitas via WhatsApp para melhor atendimento personalizado
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Seção Sobre - Expandida */}
       <section id="sobre" className="py-16 md:py-24 bg-white">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-4">
+            <h2 className="text-4xl md:text-5xl font-brand text-secondary mb-4">
               Conheça a Artesã
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -230,10 +275,134 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Seção de Encomendas */}
+      <section className="py-16 bg-gradient-to-br from-primary/5 to-accent/5">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-4">
+              Bolsas por Encomenda
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Não encontrou exatamente o que procurava? Criamos uma bolsa exclusiva para você!
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 items-start">
+              {/* Descrição do Processo */}
+              <div>
+                <h3 className="text-2xl font-display font-bold text-gray-900 mb-6">
+                  Como Funciona
+                </h3>
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-1">Descreva sua Bolsa</h4>
+                      <p className="text-gray-600">Conte-nos como imagina sua bolsa ideal: estilo, funcionalidade e detalhes especiais.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-1">Escolha Tamanho e Cor</h4>
+                      <p className="text-gray-600">Defina o tamanho ideal (Pequena, Média ou Grande) e suas cores preferidas.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-1">Receba o Orçamento</h4>
+                      <p className="text-gray-600">Enviaremos um orçamento personalizado e o prazo de confecção via WhatsApp.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Formulário de Encomenda */}
+              <div className="bg-white rounded-2xl shadow-xl p-8">
+                <h3 className="text-xl font-display font-bold text-gray-900 mb-6 text-center">
+                  Solicite seu Orçamento
+                </h3>
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Descrição da Bolsa *
+                    </label>
+                    <textarea
+                      id="description"
+                      placeholder="Ex: Gostaria de uma bolsa modelo tiracolo, com alça longa, compartimento interno com zíper..."
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
+                      rows="4"
+                    ></textarea>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Tamanho Desejado *
+                    </label>
+                    <select id="size" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                      <option value="">Selecione o tamanho</option>
+                      <option value="Pequena">Pequena</option>
+                      <option value="Média">Média</option>
+                      <option value="Grande">Grande</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Cores Preferidas
+                    </label>
+                    <input
+                      type="text"
+                      id="colors"
+                      placeholder="Ex: Marrom e bege, ou cores neutras"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    />
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      const description = document.getElementById('description').value;
+                      const size = document.getElementById('size').value;
+                      const colors = document.getElementById('colors').value;
+
+                      if (!description.trim() || !size) {
+                        alert('Por favor, preencha a descrição e o tamanho da bolsa.');
+                        return;
+                      }
+
+                      let message = `*ENCOMENDA PERSONALIZADA*\n\n`;
+                      message += `Descrição: ${description}\n`;
+                      message += `Tamanho: ${size}\n`;
+                      if (colors.trim()) {
+                        message += `Cores: ${colors}\n`;
+                      }
+                      message += `\nGostaria de receber um orçamento para esta bolsa personalizada!`;
+
+                      const whatsappUrl = `https://wa.me/${storeConfig.phone}?text=${encodeURIComponent(message)}`;
+                      window.open(whatsappUrl, '_blank');
+                    }}
+                    className="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-4 px-6 rounded-lg transition-colors flex items-center justify-center space-x-2"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    <span>Solicitar Orçamento</span>
+                  </button>
+
+                  <p className="text-xs text-gray-500 text-center">
+                    * Campos obrigatórios. Você será redirecionado para o WhatsApp.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Call to Action Final */}
       <section className="py-16 bg-gradient-to-r from-primary to-accent">
         <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-brand text-white mb-4">
             Pronta para sua bolsa exclusiva?
           </h2>
           <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">

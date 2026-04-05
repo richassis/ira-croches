@@ -13,6 +13,16 @@ export const formatPrice = (value) => {
 };
 
 /**
+ * Calcula preço com desconto PIX
+ * @param {number} price - Preço original
+ * @param {number} discountPercent - Percentual de desconto
+ * @returns {number} Preço com desconto
+ */
+export const calculatePixPrice = (price, discountPercent) => {
+  return price * (1 - discountPercent / 100);
+};
+
+/**
  * Formata array de cores em string
  * @param {Array} colors - Array de cores
  * @returns {string} Cores formatadas (ex: "Preto, Marrom")
