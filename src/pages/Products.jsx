@@ -64,30 +64,6 @@ const Products = () => {
           </p>
         </div>
 
-        {/* Card Especial - Bolsa por Encomenda */}
-        <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-6 mb-8 border-2 border-dashed border-primary/30">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-center md:text-left">
-              <h3 className="text-xl font-display font-bold text-secondary mb-2">
-                Bolsa por Encomenda
-              </h3>
-              <p className="text-gray-600">
-                Nao encontrou o que procura? Criamos uma bolsa personalizada para voce!
-              </p>
-            </div>
-            <a
-              href={`https://wa.me/${storeConfig.phone}?text=${encodeURIComponent('Ola! Gostaria de solicitar um orcamento para uma bolsa personalizada.')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="primary" className="flex items-center space-x-2 whitespace-nowrap">
-                <MessageCircle className="w-5 h-5" />
-                <span>Solicitar Orcamento</span>
-              </Button>
-            </a>
-          </div>
-        </div>
-
         {/* Barra de Filtros */}
         <div className="bg-white rounded-xl shadow-md p-4 mb-8">
           <div className="flex items-center justify-between mb-4">
@@ -203,6 +179,31 @@ const Products = () => {
             </Button>
           </div>
         )}
+
+        {/* Card Especial - Bolsa por Encomenda */}
+        <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-6 mb-8 border-2 border-dashed border-primary/30">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="text-center md:text-left">
+              <h3 className="text-xl font-display font-bold text-secondary mb-2">
+                Bolsa por Encomenda
+              </h3>
+              <p className="text-gray-600">
+                Nao encontrou o que procura? Criamos uma bolsa personalizada para voce!
+              </p>
+            </div>
+            <a
+              href={`https://wa.me/${storeConfig.phone}?text=${encodeURIComponent('Ola! Gostaria de solicitar um orcamento para uma bolsa personalizada.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="primary" className="flex items-center space-x-2 whitespace-nowrap">
+                <MessageCircle className="w-5 h-5" />
+                <span>Solicitar Orcamento</span>
+              </Button>
+            </a>
+          </div>
+        </div>
+          
       </div>
     </div>
   );

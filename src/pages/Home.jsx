@@ -1,9 +1,12 @@
 import { ArrowDown, Heart, Instagram, MessageCircle, Truck, Award, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import ProductCarousel from '../components/product/ProductCarousel';
 import { products, storeConfig } from '../data/products';
 import Button from '../components/ui/Button';
 
 const Home = () => {
+  const navigate = useNavigate();
+
   // Filtrar produtos por tamanho
   const smallProducts = products.filter(p => p.size === 'Pequena');
   const mediumProducts = products.filter(p => p.size === 'Média');
@@ -42,7 +45,7 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
                 variant="primary"
-                onClick={scrollToProducts}
+                onClick={() => navigate('/produtos')}
                 className="text-lg px-8 py-4 shadow-xl"
               >
                 Ver Coleção

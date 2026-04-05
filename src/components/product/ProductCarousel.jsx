@@ -1,9 +1,18 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ProductCard from './ProductCard';
+import Button from '../ui/Button';
 
-const ProductCarousel = ({ products, title }) => {
+const ProductCarousel = ({
+  products,
+  title,
+  showViewAllButton = true,
+  viewAllPath = '/produtos',
+}) => {
+  const navigate = useNavigate();
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
     slidesToScroll: 1,
@@ -74,6 +83,14 @@ const ProductCarousel = ({ products, title }) => {
           <ChevronRight className="w-6 h-6 text-gray-700" />
         </button>
       </div>
+
+      {showViewAllButton && (
+        <div className="mt-6 text-center">
+          <Button variant="outline" onClick={() => navigate(viewAllPath)}>
+            Ver tudo
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
