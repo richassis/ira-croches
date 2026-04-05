@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast';
 import { CartProvider } from './context/CartContext';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
+import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/produtos" element={<Products />} />
             <Route path="/bolsa/:slug" element={<ProductDetail />} />
           </Routes>
         </Layout>

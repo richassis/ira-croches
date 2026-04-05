@@ -16,8 +16,8 @@ export const products = [
     id: 1,
     name: "Bruna",
     slug: "bruna",
-    description: "Nossa bolsa mais refinada. Acabamento impecável e design único para quem busca exclusividade.",
-    price: 145.00,
+    description: "Sofisticada em marrom terroso com textura popcorn única. Texturas laterais elegantes e plaqueta dourada Ira Crochê para um toque especial.",
+    price: 210.00,
     image: "/bolsabruna.jpg",
     category: "premium",
     size: "Média", // Pequena, Média ou Grande
@@ -29,8 +29,8 @@ export const products = [
     id: 2,
     name: "Lívia",
     slug: "livia",
-    description: "Nossa bolsa mais refinada. Acabamento impecável e design único para quem busca exclusividade.",
-    price: 166.00,
+    description: "Design circular único em tom areia neutro. Alça de couro premium e fecho com presilha marrom, combinando crochê artesanal com detalhes refinados.",
+    price: 210.00,
     image: "/bolsalivia.jpg",
     category: "premium",
     size: "Média",
@@ -42,8 +42,8 @@ export const products = [
     id: 3,
     name: "Nane",
     slug: "fabiane",
-    description: "Nossa bolsa mais refinada. Acabamento impecável e design único para quem busca exclusividade.",
-    price: 168.00,
+    description: "Imponente em vinho profundo com textura popcorn luxuosa. Detalhes em pérolas de madeira natural. Nossa bolsa mais espaçosa e sofisticada.",
+    price: 255.00,
     image: "/bolsafabiane.jpg",
     category: "premium",
     size: "Grande",
@@ -55,8 +55,8 @@ export const products = [
     id: 4,
     name: "Alicia",
     slug: "alicia",
-    description: "Nossa bolsa mais refinada. Acabamento impecável e design único para quem busca exclusividade.",
-    price: 139.00,
+    description: "Vibrante em mostarda dourado com trama texturizada charmosa. Texturas laterais delicadas e plaqueta Ira Crochê. Pequena, mas cheia de personalidade.",
+    price: 145.00,
     image: "/bolsaalicia.jpg",
     category: "premium",
     size: "Pequena",
@@ -68,8 +68,8 @@ export const products = [
     id: 5,
     name: "Cris",
     slug: "cristiane",
-    description: "Nossa bolsa mais refinada. Acabamento impecável e design único para quem busca exclusividade.",
-    price: 145.00,
+    description: "Clássica e versátil em marrom terroso com textura popcorn tradicional coplaqueta dourada. O equilíbrio perfeito entre elegância e praticidade.",
+    price: 210.00,
     image: "/bolsacristiane.jpg",
     category: "premium",
     size: "Média",
@@ -81,8 +81,8 @@ export const products = [
     id: 6,
     name: "Duda",
     slug: "duda",
-    description: "Nossa bolsa mais refinada. Acabamento impecável e design único para quem busca exclusividade.",
-    price: 145.00,
+    description: "Marcante em azul royal intenso com trama texturizada única. Grande capacidade com alças longas e tassel elegante. Perfeita para quem não tem medo de brilhar.",
+    price: 255.00,
     image: "/bolsaduda.jpg",
     category: "premium",
     size: "Grande",
@@ -94,7 +94,7 @@ export const products = [
     id: 7,
     name: "Juliana",
     slug: "juliana",
-    description: "Nossa bolsa mais refinada. Acabamento impecável e design único para quem busca exclusividade.",
+    description: "Design circular moderno em branco puro com corrente prateada sofisticada. Tassel branco delicado adiciona movimento e elegância. Pequena e impactante.",
     price: 145.00,
     image: "/bolsajuliana.jpg",
     category: "premium",
@@ -107,8 +107,8 @@ export const products = [
     id: 8,
     name: "Kerolay",
     slug: "kerolay",
-    description: "Nossa bolsa mais refinada. Acabamento impecável e design único para quem busca exclusividade.",
-    price: 145.00,
+    description: "Estilo saquinho descontraído em laranja vibrante energizante. Trama texturizada única e alças longas para uso transversal ou no ombro. Pura personalidade jovem.",
+    price: 210.00,
     image: "/bolsakerolay.jpg",
     category: "premium",
     size: "Média",
@@ -120,7 +120,7 @@ export const products = [
     id: 9,
     name: "Paula",
     slug: "paula",
-    description: "Nossa bolsa mais refinada. Acabamento impecável e design único para quem busca exclusividade.",
+    description: "Formato retangular elegante em vermelho paixão intenso. Textura popcorn sofisticada com corrente prateada e plaqueta Ira Crochê. Pequena, mas marcante.",
     price: 145.00,
     image: "/bolsapaula.jpg",
     category: "premium",
@@ -133,12 +133,12 @@ export const products = [
     id: 10,
     name: "Raquel",
     slug: "raquel",
-    description: "Nossa bolsa mais refinada. Acabamento impecável e design único para quem busca exclusividade.",
-    price: 150.00,
+    description: "Estilo saquinho jovem em mostarda suave e delicado. Design com tectura e corrente dourada. Romântica e feminina, perfeita para looks delicados.",
+    price: 145.00,
     image: "/bolsaraquel.jpg",
     category: "premium",
     size: "Pequena",
-    colors: ["Rosa", "Cor Personalizável"],
+    colors: ["Mostarda", "Cor Personalizável"],
     inStock: true,
     featured: true,
   },
@@ -148,11 +148,11 @@ export const products = [
 // Configuração da loja
 export const storeConfig = {
   name: "Ira Crochês",
-  phone: "53984520981", // WhatsApp com DDD (53 = Rio Grande - RS)
+  phone: "53984520891", // WhatsApp com DDD (53 = Rio Grande - RS)
   instagram: "@silveirairacina",
   instagramUrl: "https://instagram.com/silveirairacina",
   location: "Rio Grande - RS",
-  tagline: "Bolsas artesanais feitas à mão",
+  tagline: "Bolsas de crochê feitas à mão",
   description: "Cada peça é única, feita com amor e dedicação. Trabalho artesanal de qualidade em crochê.",
 
   // Informações sobre entrega
@@ -173,5 +173,30 @@ export const storeConfig = {
     description: "Apaixonada por artesanato, Ira transformou sua paixão pelo crochê em uma forma de criar peças únicas e especiais. Cada bolsa é feita com dedicação, carinho e atenção aos detalhes, garantindo qualidade e exclusividade. Com anos de experiência em técnicas de crochê, desenvolvo modelos que combinam tradição e modernidade.",
     experience: "Mais de 10 anos trabalhando com crochê artesanal",
     specialty: "Bolsas personalizadas em diversas cores e tamanhos"
+  },
+
+  // Formas de pagamento
+  payment: {
+    pixDiscount: 5, // Desconto de 5% no PIX
+    methods: [
+      {
+        id: "pix",
+        name: "PIX",
+        description: "Pagamento à vista com desconto",
+        icon: "PIX"
+      },
+      {
+        id: "credit_cash",
+        name: "Cartão de Crédito à Vista",
+        description: "Pagamento em uma única parcela",
+        icon: "CARTÃO"
+      },
+      {
+        id: "credit_installment",
+        name: "Cartão de Crédito Parcelado",
+        description: "Parcelamento disponível",
+        icon: "PARCELAS"
+      }
+    ]
   }
 };

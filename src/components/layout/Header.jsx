@@ -15,20 +15,23 @@ const Header = () => {
           <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
             <ShoppingBag className="w-8 h-8 text-primary" />
             <div>
-              <h1 className="text-2xl font-display font-bold text-secondary">
+              <h1 className="text-3xl font-brand text-secondary">
                 {storeConfig.name}
               </h1>
               <p className="text-xs text-gray-600">{storeConfig.tagline}</p>
             </div>
           </Link>
 
-          {/* Navegação */}
+          {/* Navegacao */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#produtos" className="text-gray-700 hover:text-primary transition-colors font-medium">
+            <Link to="/produtos" className="text-gray-700 hover:text-primary transition-colors font-medium">
               Produtos
-            </a>
-            <a href="#sobre" className="text-gray-700 hover:text-primary transition-colors font-medium">
+            </Link>
+            <a href="/#sobre" className="text-gray-700 hover:text-primary transition-colors font-medium">
               Sobre
+            </a>
+            <a href="/#encomendas" className="text-gray-700 hover:text-primary transition-colors font-medium">
+              Encomendas
             </a>
             <a
               href={storeConfig.instagramUrl}

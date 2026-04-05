@@ -7,22 +7,24 @@ const ProductCarousel = ({ products, title }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
     slidesToScroll: 1,
+    loop: true, // Carrossel infinito
     breakpoints: {
       '(min-width: 640px)': { slidesToScroll: 2 },
       '(min-width: 1024px)': { slidesToScroll: 3 },
     },
   });
 
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
-  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(true);
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(true);
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
-    setPrevBtnEnabled(emblaApi.canScrollPrev());
-    setNextBtnEnabled(emblaApi.canScrollNext());
+    // Com loop infinito, botões sempre habilitados
+    setPrevBtnEnabled(true);
+    setNextBtnEnabled(true);
   }, [emblaApi]);
 
   useEffect(() => {
@@ -43,16 +45,14 @@ const ProductCarousel = ({ products, title }) => {
       )}
 
       <div className="relative">
-        {/* Botão Anterior */}
-        {prevBtnEnabled && (
-          <button
-            onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-100 transition-colors"
-            aria-label="Anterior"
-          >
-            <ChevronLeft className="w-6 h-6 text-gray-700" />
-          </button>
-        )}
+        {/* Botão Anterior - sempre visível */}
+        <button
+          onClick={scrollPrev}
+          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-100 transition-colors opacity-80 hover:opacity-100"
+          aria-label="Anterior"
+        >
+          <ChevronLeft className="w-6 h-6 text-gray-700" />
+        </button>
 
         {/* Carrossel */}
         <div className="overflow-hidden" ref={emblaRef}>
@@ -65,16 +65,14 @@ const ProductCarousel = ({ products, title }) => {
           </div>
         </div>
 
-        {/* Botão Próximo */}
-        {nextBtnEnabled && (
-          <button
-            onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-100 transition-colors"
-            aria-label="Próximo"
-          >
-            <ChevronRight className="w-6 h-6 text-gray-700" />
-          </button>
-        )}
+        {/* Botão Próximo - sempre visível */}
+        <button
+          onClick={scrollNext}
+          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-100 transition-colors opacity-80 hover:opacity-100"
+          aria-label="Próximo"
+        >
+          <ChevronRight className="w-6 h-6 text-gray-700" />
+        </button>
       </div>
     </div>
   );
