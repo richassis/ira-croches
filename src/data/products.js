@@ -152,7 +152,7 @@ export const storeConfig = {
   instagram: "@silveirairacina",
   instagramUrl: "https://instagram.com/silveirairacina",
   location: "Rio Grande - RS",
-  tagline: "Bolsas de crochê feitas à mão",
+  tagline: "Bolsas únicas, feitas à mão",
   description: "Cada peça é única, feita com amor e dedicação. Trabalho artesanal de qualidade em crochê.",
 
   // Informações sobre entrega

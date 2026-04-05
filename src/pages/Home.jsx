@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ArrowDown, Heart, Instagram, MessageCircle, Truck, Award, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ProductCarousel from '../components/product/ProductCarousel';
@@ -6,6 +7,7 @@ import Button from '../components/ui/Button';
 
 const Home = () => {
   const navigate = useNavigate();
+  const [mobileCarouselItems, setMobileCarouselItems] = useState(1);
 
   // Filtrar produtos por tamanho
   const smallProducts = products.filter(p => p.size === 'Pequena');
@@ -69,20 +71,20 @@ const Home = () => {
       </section>
 
        {/* Seção Sobre - Expandida */}
-      <section id="sobre" className="py-16 md:py-24 bg-white">
+      <section id="sobre" className="py-12 md:py-24 bg-white">
         <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-brand text-secondary mb-4">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-3xl md:text-5xl font-brand text-secondary mb-3 md:mb-4">
               Conheça a Artesã
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
               A história por trás de cada bolsa
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-10 md:mb-16">
             {/* Foto da Artesã */}
-            <div className="order-2 md:order-1">
+            <div className="hidden md:block order-2 md:order-1">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-xl bg-gray-200 flex items-center justify-center">
                 {storeConfig.artisan.photo ? (
                   <img
@@ -102,26 +104,45 @@ const Home = () => {
 
             {/* Informações da Artesã */}
             <div className="order-1 md:order-2">
-              <h3 className="text-2xl font-display font-bold text-primary mb-4">
+              <h3 className="text-xl md:text-2xl font-display font-bold text-primary mb-3 md:mb-4 text-center md:text-left">
                 {storeConfig.artisan.name}
               </h3>
-              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+
+              <div className="md:hidden mb-4">
+                <div className="aspect-square max-w-[240px] mx-auto rounded-xl overflow-hidden shadow-lg bg-gray-200 flex items-center justify-center">
+                  {storeConfig.artisan.photo ? (
+                    <img
+                      src={storeConfig.artisan.photo}
+                      alt={storeConfig.artisan.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="text-center p-6">
+                      <Users className="w-14 h-14 text-gray-400 mx-auto mb-3" />
+                      <p className="text-gray-500 text-base font-semibold">{storeConfig.artisan.name}</p>
+                      <p className="text-gray-400 text-xs mt-1">Foto em breve</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-5 md:mb-6 text-center md:text-left">
                 {storeConfig.artisan.description}
               </p>
 
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
                 <div className="flex items-start">
-                  <Award className="w-6 h-6 text-primary mr-3 mt-1 flex-shrink-0" />
+                  <Award className="w-5 h-5 md:w-6 md:h-6 text-primary mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-gray-900">Experiência</p>
-                    <p className="text-gray-600">{storeConfig.artisan.experience}</p>
+                    <p className="font-semibold text-gray-900 text-sm md:text-base">Experiência</p>
+                    <p className="text-gray-600 text-sm md:text-base">{storeConfig.artisan.experience}</p>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <Heart className="w-6 h-6 text-primary mr-3 mt-1 flex-shrink-0" />
+                  <Heart className="w-5 h-5 md:w-6 md:h-6 text-primary mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-gray-900">Especialidade</p>
-                    <p className="text-gray-600">{storeConfig.artisan.specialty}</p>
+                    <p className="font-semibold text-gray-900 text-sm md:text-base">Especialidade</p>
+                    <p className="text-gray-600 text-sm md:text-base">{storeConfig.artisan.specialty}</p>
                   </div>
                 </div>
               </div>
@@ -131,7 +152,7 @@ const Home = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button variant="primary" className="flex items-center space-x-2">
+                <Button variant="primary" className="flex items-center space-x-2 w-full md:w-auto justify-center">
                   <Instagram className="w-5 h-5" />
                   <span>Seguir {storeConfig.instagram}</span>
                 </Button>
@@ -140,31 +161,31 @@ const Home = () => {
           </div>
 
           {/* Cards de Destaque */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-6 rounded-xl text-center">
-              <Heart className="w-12 h-12 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-gray-900 mb-2">Feito à Mão</h3>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-4 md:p-6 rounded-xl text-center">
+              <Heart className="w-8 h-8 md:w-12 md:h-12 text-primary mx-auto mb-2 md:mb-3" />
+              <h3 className="font-bold text-gray-900 mb-1 md:mb-2 text-sm md:text-base">Feito à Mão</h3>
               <p className="text-sm text-gray-600">
                 Cada peça é única e artesanal
               </p>
             </div>
-            <div className="bg-gradient-to-br from-accent/10 to-accent/5 p-6 rounded-xl text-center">
-              <MessageCircle className="w-12 h-12 text-accent mx-auto mb-3" />
-              <h3 className="font-bold text-gray-900 mb-2">Atendimento</h3>
+            <div className="bg-gradient-to-br from-accent/10 to-accent/5 p-4 md:p-6 rounded-xl text-center">
+              <MessageCircle className="w-8 h-8 md:w-12 md:h-12 text-accent mx-auto mb-2 md:mb-3" />
+              <h3 className="font-bold text-gray-900 mb-1 md:mb-2 text-sm md:text-base">Atendimento</h3>
               <p className="text-sm text-gray-600">
                 Direto pelo WhatsApp
               </p>
             </div>
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-6 rounded-xl text-center">
-              <div className="text-4xl mb-3">✨</div>
-              <h3 className="font-bold text-gray-900 mb-2">Qualidade</h3>
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-4 md:p-6 rounded-xl text-center">
+              <div className="text-2xl md:text-4xl mb-2 md:mb-3">✨</div>
+              <h3 className="font-bold text-gray-900 mb-1 md:mb-2 text-sm md:text-base">Qualidade</h3>
               <p className="text-sm text-gray-600">
                 Materiais selecionados
               </p>
             </div>
-            <div className="bg-gradient-to-br from-accent/10 to-accent/5 p-6 rounded-xl text-center">
-              <div className="text-4xl mb-3">🎨</div>
-              <h3 className="font-bold text-gray-900 mb-2">Design</h3>
+            <div className="bg-gradient-to-br from-accent/10 to-accent/5 p-4 md:p-6 rounded-xl text-center">
+              <div className="text-2xl md:text-4xl mb-2 md:mb-3">🎨</div>
+              <h3 className="font-bold text-gray-900 mb-1 md:mb-2 text-sm md:text-base">Design</h3>
               <p className="text-sm text-gray-600">
                 Modelos exclusivos
               </p>
@@ -183,9 +204,35 @@ const Home = () => {
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Explore todas as nossas bolsas artesanais
             </p>
+            <div className="md:hidden mt-5 inline-flex rounded-lg border border-gray-300 overflow-hidden">
+              <button
+                onClick={() => setMobileCarouselItems(1)}
+                className={`px-4 py-2 text-sm font-medium transition-colors ${
+                  mobileCarouselItems === 1
+                    ? 'bg-primary text-white'
+                    : 'bg-white text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                1 por vez
+              </button>
+              <button
+                onClick={() => setMobileCarouselItems(2)}
+                className={`px-4 py-2 text-sm font-medium transition-colors ${
+                  mobileCarouselItems === 2
+                    ? 'bg-primary text-white'
+                    : 'bg-white text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                2 por vez
+              </button>
+            </div>
           </div>
 
-          <ProductCarousel products={products} />
+          <ProductCarousel
+            products={products}
+            mobileItemsPerView={mobileCarouselItems}
+            productCardMobileShortLabels
+          />
         </div>
       </section>
 
@@ -193,7 +240,12 @@ const Home = () => {
       {smallProducts.length > 0 && (
         <section className="py-16 bg-gray-50">
           <div className="container-custom">
-            <ProductCarousel products={smallProducts} title="Bolsas Pequenas" />
+            <ProductCarousel
+              products={smallProducts}
+              title="Bolsas Pequenas"
+              mobileItemsPerView={mobileCarouselItems}
+              productCardMobileShortLabels
+            />
             <p className="text-sm text-gray-600 mt-4">Perfeitas para o dia a dia e ocasiões casuais</p>
           </div>
         </section>
@@ -203,7 +255,12 @@ const Home = () => {
       {mediumProducts.length > 0 && (
         <section className="py-16 bg-white">
           <div className="container-custom">
-            <ProductCarousel products={mediumProducts} title="Bolsas Médias" />
+            <ProductCarousel
+              products={mediumProducts}
+              title="Bolsas Médias"
+              mobileItemsPerView={mobileCarouselItems}
+              productCardMobileShortLabels
+            />
             <p className="text-sm text-gray-600 mt-4">Equilíbrio perfeito entre praticidade e estilo</p>
           </div>
         </section>
@@ -213,7 +270,12 @@ const Home = () => {
       {largeProducts.length > 0 && (
         <section className="py-16 bg-gray-50">
           <div className="container-custom">
-            <ProductCarousel products={largeProducts} title="Bolsas Grandes" />
+            <ProductCarousel
+              products={largeProducts}
+              title="Bolsas Grandes"
+              mobileItemsPerView={mobileCarouselItems}
+              productCardMobileShortLabels
+            />
             <p className="text-sm text-gray-600 mt-4">Espaço e elegância para suas necessidades</p>
           </div>
         </section>

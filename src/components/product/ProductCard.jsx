@@ -6,7 +6,7 @@ import { generateProductWhatsAppURL } from '../../utils/whatsapp';
 import { storeConfig } from '../../data/products';
 import Button from '../ui/Button';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, compact = false, mobileShortLabels = false }) => {
   const { addToCart } = useCart();
 
   const handleBuyNow = (e) => {
@@ -44,30 +44,36 @@ const ProductCard = ({ product }) => {
       </div>
 
       {/* Conteúdo */}
-      <div className="p-5">
+      <div className={compact ? 'p-3.5' : 'p-5'}>
         {/* Nome e Preço */}
-        <div className="mb-3">
-          <h3 className="text-lg font-display font-semibold text-gray-900 mb-1">
+        <div className={compact ? 'mb-2' : 'mb-3'}>
+          <h3 className={compact ? 'text-base font-display font-semibold text-gray-900 mb-1 line-clamp-1' : 'text-lg font-display font-semibold text-gray-900 mb-1'}>
             {product.name}
           </h3>
           <div className="space-y-1">
-            <p className="text-2xl font-bold text-primary">
+            <p className={compact ? 'text-lg font-bold text-primary' : 'text-2xl font-bold text-primary'}>
               {formatPrice(product.price)}
             </p>
-            <p className="text-sm text-green-600 font-semibold">
+            <p className={compact ? 'text-xs text-green-600 font-semibold' : 'text-sm text-green-600 font-semibold'}>
               {formatPrice(pixPrice)} no PIX ({storeConfig.payment.pixDiscount}% OFF)
             </p>
           </div>
         </div>
 
         {/* Descrição */}
-        <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-          {product.description}
-        </p>
+        {compact ? (
+          <p className="hidden sm:block text-xs text-gray-600 mb-2 line-clamp-2">
+            {product.description}
+          </p>
+        ) : (
+          <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+            {product.description}
+          </p>
+        )}
 
         {/* Cores */}
         {product.colors && product.colors.length > 0 && (
-          <div className="mb-4">
+          <div className={compact ? 'mb-3' : 'mb-4'}>
             <p className="text-xs text-gray-500">
               Cores: <span className="text-gray-700 font-medium">{formatColors(product.colors)}</span>
             </p>
@@ -75,34 +81,50 @@ const ProductCard = ({ product }) => {
         )}
 
         {/* Botões */}
-        <div className="space-y-2">
+        <div className={compact ? 'space-y-1.5' : 'space-y-2'}>
           <Button
             variant="outline"
             onClick={handleBuyNow}
             disabled={!product.inStock}
-            className="w-full flex items-center justify-center space-x-2"
+            className={compact ? 'w-full flex items-center justify-center space-x-1 text-xs py-2 px-2 whitespace-nowrap' : 'w-full flex items-center justify-center space-x-2'}
           >
-            <MessageCircle className="w-4 h-4" />
-            <span>Comprar Agora</span>
+            <MessageCircle className={compact ? 'w-3.5 h-3.5' : 'w-4 h-4'} />
+            {(compact || mobileShortLabels) ? (
+              <>
+                <span className="sm:hidden">Comprar</span>
+                <span className="hidden sm:inline">Comprar Agora</span>
+              </>
+            ) : (
+              <span>Comprar Agora</span>
+            )}
           </Button>
 
           <Button
             variant="primary"
             onClick={handleAddToCart}
             disabled={!product.inStock}
-            className="w-full flex items-center justify-center space-x-2"
+            className={compact ? 'w-full flex items-center justify-center space-x-1 text-xs py-2 px-2 whitespace-nowrap' : 'w-full flex items-center justify-center space-x-2'}
           >
-            <ShoppingCart className="w-4 h-4" />
-            <span>Adicionar ao Carrinho</span>
+            <ShoppingCart className={compact ? 'w-3.5 h-3.5' : 'w-4 h-4'} />
+            {(compact || mobileShortLabels) ? (
+              <>
+                <span className="sm:hidden">Carrinho</span>
+                <span className="hidden sm:inline">Adicionar ao Carrinho</span>
+              </>
+            ) : (
+              <span>Adicionar ao Carrinho</span>
+            )}
           </Button>
 
-          <Button
-            variant="ghost"
-            className="w-full flex items-center justify-center space-x-2"
-          >
-            <Eye className="w-4 h-4" />
-            <span>Ver Detalhes</span>
-          </Button>
+          {!compact && (
+            <Button
+              variant="ghost"
+              className="w-full flex items-center justify-center space-x-2"
+            >
+              <Eye className="w-4 h-4" />
+              <span>Ver Detalhes</span>
+            </Button>
+          )}
         </div>
       </div>
     </Link>

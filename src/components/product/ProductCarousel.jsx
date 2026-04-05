@@ -10,6 +10,8 @@ const ProductCarousel = ({
   title,
   showViewAllButton = true,
   viewAllPath = '/produtos',
+  mobileItemsPerView = 1,
+  productCardMobileShortLabels = false,
 }) => {
   const navigate = useNavigate();
 
@@ -65,10 +67,15 @@ const ProductCarousel = ({
 
         {/* Carrossel */}
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-6">
+          <div className="flex gap-4 sm:gap-6">
             {products.map((product) => (
-              <div key={product.id} className="flex-[0_0_100%] sm:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] xl:flex-[0_0_calc(25%-18px)] min-w-0">
-                <ProductCard product={product} />
+              <div
+                key={product.id}
+                className={`${
+                  mobileItemsPerView === 2 ? 'flex-[0_0_46%]' : 'flex-[0_0_86%]'
+                } sm:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] xl:flex-[0_0_calc(25%-18px)] min-w-0`}
+              >
+                <ProductCard product={product} mobileShortLabels={productCardMobileShortLabels} />
               </div>
             ))}
           </div>

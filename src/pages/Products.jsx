@@ -12,7 +12,7 @@ const Products = () => {
     color: '',
     priceRange: '',
   });
-  const [showFilters, setShowFilters] = useState(true);
+  const [showFilters, setShowFilters] = useState(false);
 
   // Extrair opcoes unicas para os filtros
   const filterOptions = useMemo(() => {
@@ -164,9 +164,9 @@ const Products = () => {
 
         {/* Grid de Produtos */}
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5 lg:gap-6">
             {filteredProducts.map(product => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} product={product} compact />
             ))}
           </div>
         ) : (
