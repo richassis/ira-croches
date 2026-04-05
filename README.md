@@ -1,6 +1,6 @@
-# Ira Crochês - E-commerce de Bolsas Artesanais
+# Ira Crochê - E-commerce de Bolsas Artesanais
 
-Site de vendas para **Ira Crochês**, loja de bolsas de crochê artesanais localizada em Rio Grande - RS.
+Site de vendas para **Ira Crochê**, loja de bolsas de crochê artesanais localizada em Rio Grande - RS.
 
 ## 🎨 Sobre o Projeto
 
@@ -199,7 +199,7 @@ export const storeConfig = {
 4. **Call to Action**: Link direto para WhatsApp
 
 ### Header
-- Logo "Ira Crochês"
+- Logo "Ira Crochê"
 - Links de navegação
 - Ícone do carrinho com contador de itens
 
@@ -233,7 +233,7 @@ export const storeConfig = {
 
 ## 📄 Licença
 
-Projeto criado para **Ira Crochês** - Rio Grande, RS.
+Projeto criado para **Ira Crochê** - Rio Grande, RS.
 
 ## 👤 Contato
 
@@ -243,4 +243,4 @@ Projeto criado para **Ira Crochês** - Rio Grande, RS.
 
 ---
 
-Feito com ❤️ para Ira Crochês
+Feito com ❤️ para Ira Crochê

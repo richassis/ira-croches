@@ -20,7 +20,7 @@ export const products = [
     price: 210.00,
     image: "/bolsabruna.jpg",
     category: "premium",
-    size: "Média", // Pequena, Média ou Grande
+    size: "Pequena", // Pequena, Média ou Grande
     colors: ["Marrom", "Cor Personalizável"],
     inStock: true,
     featured: true,
@@ -147,7 +147,7 @@ export const products = [
 
 // Configuração da loja
 export const storeConfig = {
-  name: "Ira Crochês",
+  name: "Ira Crochê",
   phone: "53984520891", // WhatsApp com DDD (53 = Rio Grande - RS)
   instagram: "@silveirairacina",
   instagramUrl: "https://instagram.com/silveirairacina",
