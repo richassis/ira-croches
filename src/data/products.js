@@ -17,7 +17,7 @@ export const products = [
     name: "Bruna",
     slug: "bruna",
     description: "Sofisticada em marrom terroso com textura popcorn única. Texturas laterais elegantes e plaqueta dourada Ira Crochê para um toque especial.",
-    price: 210.00,
+    price: 145.00,
     image: "/bolsabruna.jpg",
     category: "premium",
     size: "Pequena", // Pequena, Média ou Grande
