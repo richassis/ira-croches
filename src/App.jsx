@@ -1,15 +1,19 @@
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { CartProvider } from './context/CartContext';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
+import ProductDetail from './pages/ProductDetail';
 
 function App() {
   return (
     <Router>
       <CartProvider>
         <Layout>
-          <Home />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/bolsa/:slug" element={<ProductDetail />} />
+          </Routes>
         </Layout>
         <Toaster
           position="bottom-right"

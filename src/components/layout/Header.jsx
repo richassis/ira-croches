@@ -1,4 +1,5 @@
 import { ShoppingBag } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { storeConfig } from '../../data/products';
 import CartIcon from '../cart/CartIcon';
@@ -11,7 +12,7 @@ const Header = () => {
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
             <ShoppingBag className="w-8 h-8 text-primary" />
             <div>
               <h1 className="text-2xl font-display font-bold text-secondary">
@@ -19,7 +20,7 @@ const Header = () => {
               </h1>
               <p className="text-xs text-gray-600">{storeConfig.tagline}</p>
             </div>
-          </div>
+          </Link>
 
           {/* Navegação */}
           <nav className="hidden md:flex items-center space-x-8">

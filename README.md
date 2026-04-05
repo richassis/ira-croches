@@ -13,6 +13,7 @@ Este é um site moderno e responsivo desenvolvido em React para vendas de bolsas
 - 🎨 Tema customizado (preto, dourado e tons terrosos)
 - ⚡ Performance otimizada com Vite
 - 📦 Fácil de adicionar novos produtos
+- 🔍 Páginas individuais para cada produto com detalhes completos
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -40,7 +41,7 @@ ira-croche/
 │   │   └── ui/          # Button, Badge (componentes reutilizáveis)
 │   ├── context/         # CartContext (gerenciamento de estado)
 │   ├── data/            # products.js (dados dos produtos) ⭐
-│   ├── pages/           # Home.jsx
+│   ├── pages/           # Home.jsx, ProductDetail.jsx
 │   ├── utils/           # whatsapp.js, formatters.js
 │   ├── App.jsx          # Componente principal
 │   ├── main.jsx         # Entry point

@@ -1,4 +1,5 @@
-import { ShoppingCart, MessageCircle } from 'lucide-react';
+import { ShoppingCart, MessageCircle, Eye } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { formatPrice, formatColors } from '../../utils/formatters';
 import { generateProductWhatsAppURL } from '../../utils/whatsapp';
@@ -59,6 +60,16 @@ const ProductCard = ({ product }) => {
 
         {/* Botões */}
         <div className="space-y-2">
+          <Link to={`/bolsa/${product.slug}`}>
+            <Button
+              variant="ghost"
+              className="w-full flex items-center justify-center space-x-2"
+            >
+              <Eye className="w-4 h-4" />
+              <span>Ver Detalhes</span>
+            </Button>
+          </Link>
+
           <Button
             variant="primary"
             onClick={() => addToCart(product)}
